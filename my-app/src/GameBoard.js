@@ -7,6 +7,10 @@ function GameBoard() {
 
   // Function to handle a cell click
   const handleCellClick = (index) => {
+    if (board[index] !== null) {
+      return; // Do nothing if cell is already filled
+    }
+
     const newBoard = [...board]; // Create a copy of the board array
     newBoard[index] = isPlayer1Turn ? 'X' : 'O'; // Update the selected cell with X or O
     setBoard(newBoard); // Update the state with the new board array
@@ -45,9 +49,20 @@ function GameBoard() {
     );
   };
 
+  // Function to render the current turn indicator
+  const renderTurnIndicator = () => {
+    const player = isPlayer1Turn ? 'X' : 'O';
+    return (
+      <div className="turn-indicator">
+        Current Turn: {player}
+      </div>
+    );
+  };
+
   return (
     <div className="game-board">
       <h1>Tic Tac Toe</h1>
+      {renderTurnIndicator()}
       {renderBoard()}
     </div>
   );
