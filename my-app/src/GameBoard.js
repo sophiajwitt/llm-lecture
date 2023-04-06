@@ -6,11 +6,11 @@ function GameBoard() {
   const [isPlayer1Turn, setIsPlayer1Turn] = useState(true); // Initialize with player 1's turn
 
   // Function to handle a cell click
-  const handleCellClick = (index) => {
+    const handleCellClick = (index) => {
     if (board[index] !== null) {
       return; // Do nothing if cell is already filled
     }
-
+  
     const newBoard = [...board]; // Create a copy of the board array
     newBoard[index] = isPlayer1Turn ? 'X' : 'O'; // Update the selected cell with X or O
     setBoard(newBoard); // Update the state with the new board array
@@ -25,6 +25,8 @@ function GameBoard() {
       </div>
     );
   };
+
+  
 
   // Function to render the entire game board
   const renderBoard = () => {
